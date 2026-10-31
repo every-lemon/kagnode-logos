@@ -15,6 +15,8 @@ Only the geometric mark. Every SVG and PNG has a transparent background, with no
 
 PNG folders: [solid](png/solid/), [outline](png/outline/), [two-tone](png/two-tone/).
 
+All 240 PNGs are also available directly in the repository's [`/png`](../png/) folder, named `mark-{style}-{color}-{size}.png`. These are identical copies of the files grouped above.
+
 Each color comes in **16, 24, 32, 48, 64, 128, 256, 512, 1024 and 2048 px**. For example, `png/solid/white-1024.png` is the white mark on a transparent 1024 × 1024 canvas. White artwork is easiest to see on a dark surface. Use the solid treatment for very small icons; outlines are clearer at larger sizes. The two-tone treatment gives the companion shape 45% opacity.
 
 All variants preserve the canonical shape and square canvas alignment. SVG comments identify the canvas, treatment, primary shape and companion shape. See the repository's artwork license and brand policy.

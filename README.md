@@ -7,7 +7,8 @@ The canonical KagNode geometric mark and its wordmarks, product layouts and icon
 - [`symbols/`](symbols/): **24 symbol-only variants**, without words or a period. Black, white, charcoal, gray, light gray, slate, blue and light blue; solid, outline and two-tone treatments. Transparent SVGs and PNGs at 16–2048 px. See the [variant guide](symbols/README.md).
 - `source/`: canonical SVG, complete commented logo sheet and font notices.
 - `svg/`: transparent marks, outlined wordmarks and product versions for light, dark, blue, black and white use.
-- `png/`, `webp/`: transparent raster assets.
+- [`png/`](png/): transparent raster assets, including all **240 symbol-only PNGs** directly in this folder. Names follow `mark-{style}-{color}-{size}.png`, for example [`mark-solid-gray-1024.png`](png/mark-solid-gray-1024.png).
+- `webp/`: lossless raster assets.
 - `pdf/`, `eps/`: vector print assets.
 - `icons/`: transparent favicons, PNG sizes from 16 to 1024, ICO and ICNS.
 - `ascii/`: large 77-column wordmark, 30-column compact and 18-column small banners, plus a symbol-only mark; each has plain ASCII and blue ANSI versions.

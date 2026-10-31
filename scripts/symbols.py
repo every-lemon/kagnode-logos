@@ -41,6 +41,7 @@ def symbol_svg(root, color, style):
 
 
 def write_symbols(root):
+    (root / 'png').mkdir(exist_ok=True)
     for style in STYLES:
         svg_dir, png_dir = root / 'symbols/svg' / style, root / 'symbols/png' / style
         svg_dir.mkdir(parents=True, exist_ok=True)
@@ -49,15 +50,18 @@ def write_symbols(root):
             data = symbol_svg(root, color, style).encode()
             (svg_dir / f'{name}.svg').write_bytes(data)
             for size in SIZES:
-                cairosvg.svg2png(bytestring=data, output_width=size, output_height=size,
-                                write_to=str(png_dir / f'{name}-{size}.png'))
+                png = cairosvg.svg2png(bytestring=data, output_width=size, output_height=size)
+                (png_dir / f'{name}-{size}.png').write_bytes(png)
+                # Keep every symbol size directly accessible in the main PNG folder.
+                (root / 'png' / f'mark-{style}-{name}-{size}.png').write_bytes(png)
 
 
 if __name__ == '__main__':
     root = Path(__file__).resolve().parents[1]
     write_symbols(root)
     manifest = json.loads((root / 'manifest.json').read_text())
-    for path in sorted((root / 'symbols').rglob('*')):
+    paths = list((root / 'symbols').rglob('*')) + list((root / 'png').glob('mark-*.png'))
+    for path in sorted(paths):
         if path.suffix in ('.svg', '.png'):
             manifest[str(path.relative_to(root))] = hashlib.sha256(path.read_bytes()).hexdigest()
     (root / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')

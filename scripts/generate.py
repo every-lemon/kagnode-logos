@@ -49,10 +49,12 @@ for size in [16,32,48,64,128,180,256,512,1024]:cairosvg.svg2png(bytestring=mark,
 im=Image.open(ROOT/'icons/kagnode-1024.png');im.save(ROOT/'icons/favicon.ico',sizes=[(16,16),(32,32),(48,48),(64,64),(128,128),(256,256)]);im.save(ROOT/'icons/kagnode.icns');(ROOT/'icons/favicon.svg').write_bytes(mark)
 from ascii_art import write_ascii
 write_ascii(ROOT)
+from symbols import write_symbols
+write_symbols(ROOT)
 sheet=(ROOT/'source/KagNode-logo-sheet.svg').read_bytes()
 cairosvg.svg2pdf(bytestring=sheet,write_to=str(ROOT/'pdf/logo-sheet.pdf'))
 cairosvg.svg2eps(bytestring=sheet,write_to=str(ROOT/'eps/logo-sheet.eps'))
 cairosvg.svg2png(bytestring=sheet,output_width=1600,write_to=str(ROOT/'png/logo-sheet.png'))
 Image.open(ROOT/'png/logo-sheet.png').save(ROOT/'webp/logo-sheet.webp',lossless=True)
-manifest={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for folder in ['svg','png','webp','pdf','eps','icons','ascii'] for p in sorted((ROOT/folder).glob('*'))}
+manifest={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for folder in ['svg','png','webp','pdf','eps','icons','ascii','symbols'] for p in sorted((ROOT/folder).rglob('*')) if p.is_file() and p.suffix.lower()!='.md'}
 (ROOT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n');print('Generated',len(manifest),'assets')

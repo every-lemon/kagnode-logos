@@ -4,6 +4,7 @@
 
 The canonical KagNode geometric mark and its wordmarks, product layouts and icons. Combined marks use **KagNode.** with a period. Small symbol-only icons do not.
 
+- [`symbols/`](symbols/): **24 symbol-only variants**, without words or a period. Black, white, charcoal, gray, light gray, slate, blue and light blue; solid, outline and two-tone treatments. Transparent SVGs and PNGs at 16–2048 px. See the [variant guide](symbols/README.md).
 - `source/`: canonical SVG, complete commented logo sheet and font notices.
 - `svg/`: transparent marks, outlined wordmarks and product versions for light, dark, blue, black and white use.
 - `png/`, `webp/`: transparent raster assets.
@@ -23,5 +24,7 @@ python3 -m venv .venv
 ```
 
 Install the DejaVu Sans system font at the path in the generator. Its notices are retained in `source/FONT-NOTICES.txt`. `python scripts/ascii_art.py` rebuilds only the terminal artwork and its checksums. The generator makes no network requests and uses no external image assets.
+
+`python scripts/symbols.py` rebuilds only the symbol collection and updates its checksums. This uses the paths in `source/canonical-mark.svg` directly and requires no fonts. Existing wordmarks and terminal artwork remain unchanged.
 
 See [LICENSE](LICENSE) for artwork permission and [BRAND-POLICY.md](BRAND-POLICY.md) for identity use. These assets do not assert worldwide uniqueness or trademark registration. Software in the KagNode application repositories has its own license.

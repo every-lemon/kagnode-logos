@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="KagNode symbol">
+<!-- PHASE 00: transparent canvas; symbol only, no typography -->
+<!-- PHASE 01: two-tone treatment in #8ab4ff; canonical geometry is preserved -->
+<g fill="#8ab4ff">
+  <!-- PHASE 02: primary shape -->
+  <path d="M4 18C4 9 11 4 23 5L18 27C10 28 4 25 4 18Z"/>
+  <!-- PHASE 03: companion shape -->
+  <path d="m25 11 4 5-3 10-4-3Z" opacity="0.45"/>
+</g>
+</svg>

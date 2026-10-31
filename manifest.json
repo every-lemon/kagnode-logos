@@ -210,6 +210,12 @@
   "icons/kagnode-512.png": "c5594561dcbe72acb1c51433e833eff18756dd8efa05c5c86ca9351e47e33284",
   "icons/kagnode-64.png": "2505b49bdc7ce3ecdc74f6a8d60d1df2d8d8644188d4014b89ea64b3fd1ef00d",
   "icons/kagnode.icns": "4b41cdb2475bf1c0299262d9acd20c8e98c58f1c798d6586db74950a6e328cf6",
-  "ascii/kagnode.ansi": "d87ad9187eaadf011808609d2f13cc745e1696a04ba60cddea601c41e5288602",
-  "ascii/kagnode.txt": "99c258254b55d61475f5e25ece7c868d5213b77d49f30407a2d595094bde9793"
+  "ascii/kagnode.ansi": "f77f75d17d16b76c9f7b507f15e36a61ac52726bf9a80780f43d71e69d762f75",
+  "ascii/kagnode.txt": "0625d745243e2688bbe862d4bfe3fe0a9f72d3845d2b394283e4e3c3ac4141ac",
+  "ascii/kagnode-compact.ansi": "ea6b8f14d34c8e033053f4053c5554bcae9e7ae15147b68af0f21f36dd29b71b",
+  "ascii/kagnode-compact.txt": "9f40a4e02bbd332cdcca7414fbeb1ad6a1d7183d587efd9adcadb8216e0cae5b",
+  "ascii/kagnode-small.ansi": "14f9cf306d66209a01b1406e287e3bf9bae0606d15c3d8841795e75866462a66",
+  "ascii/kagnode-small.txt": "14f814e905e17c759a74b76f200fad16698a6862deaa2dcba29b7c995cc45dfd",
+  "ascii/mark.ansi": "f841527ad894ee773b5eee09705d8dbad7fd9417e09ac9a4f6a31c39f19f4883",
+  "ascii/mark.txt": "6533633c5ffd59ae85054fd49698f20b99fe7dc9d9d4088a4ee2297964c88d6f"
 }

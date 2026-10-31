@@ -47,8 +47,8 @@ for name,data in variants.items():
 mark=variants['mark-blue'].encode()
 for size in [16,32,48,64,128,180,256,512,1024]:cairosvg.svg2png(bytestring=mark,output_width=size,output_height=size,write_to=str(ROOT/'icons'/f'kagnode-{size}.png'))
 im=Image.open(ROOT/'icons/kagnode-1024.png');im.save(ROOT/'icons/favicon.ico',sizes=[(16,16),(32,32),(48,48),(64,64),(128,128),(256,256)]);im.save(ROOT/'icons/kagnode.icns');(ROOT/'icons/favicon.svg').write_bytes(mark)
-ascii_logo='   .ooooo.\n  dOOOOO  /\n  OOOOO  /   KagNode.\n   `OO  /    Open source\n'
-(ROOT/'ascii/kagnode.txt').write_text(ascii_logo);(ROOT/'ascii/kagnode.ansi').write_text('\033[34m'+ascii_logo+'\033[0m')
+from ascii_art import write_ascii
+write_ascii(ROOT)
 sheet=(ROOT/'source/KagNode-logo-sheet.svg').read_bytes()
 cairosvg.svg2pdf(bytestring=sheet,write_to=str(ROOT/'pdf/logo-sheet.pdf'))
 cairosvg.svg2eps(bytestring=sheet,write_to=str(ROOT/'eps/logo-sheet.eps'))

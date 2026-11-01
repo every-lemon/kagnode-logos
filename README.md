@@ -1,4 +1,4 @@
-<p align="center"><img src="svg/wordmark-light.svg" width="440" alt="KagNode."></p>
+<p align="center"><img src="svg/github-wordmark.svg" width="440" alt="KagNode."></p>
 
 # KagNode logos
 
@@ -12,6 +12,7 @@ The canonical KagNode geometric mark and its wordmarks, product layouts and icon
 - `pdf/`, `eps/`: vector print assets.
 - `icons/`: transparent favicons, PNG sizes from 16 to 1024, ICO and ICNS.
 - `ascii/`: large 77-column wordmark, 30-column compact and 18-column small banners, plus a symbol-only mark; each has plain ASCII and blue ANSI versions.
+- `svg/github-wordmark.svg`: an adaptive wordmark, matching the VPN header, for light and dark README backgrounds.
 - `manifest.json`: checksums for generated variants.
 
 Product variants include Cloud, Developer, Operator, Mail, VPN, HTTP Boot, CLI and **[Project]** as the placeholder. SVG comments identify the canvas, symbol, wordmark and product phases. The editable sheet preserves its existing section comments; generated wordmarks use outlined typography to avoid external font dependencies.

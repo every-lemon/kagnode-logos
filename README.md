@@ -11,7 +11,7 @@ The canonical KagNode geometric mark and its wordmarks, product layouts and icon
 - `webp/`: lossless raster assets.
 - `pdf/`, `eps/`: vector print assets.
 - `icons/`: transparent favicons, PNG sizes from 16 to 1024, ICO and ICNS.
-- `ascii/`: large 77-column wordmark, 30-column compact and 18-column small banners, plus a symbol-only mark; each has plain ASCII and blue ANSI versions.
+- `ascii/`: a 112-column display, 68-column standard banner, 43-column wordmark, 22-column compact and 18-column small banners, plus the symbol alone. Each has plain ASCII (`.txt`), UTF-8 full blocks (`-blocks.txt`) and blue/white ANSI (`.ansi`) versions. Widths count terminal cells; use a monospaced font. The CLI and HTTP Boot select a smaller layout automatically and reserve a column to prevent wrapping. Redirected output stays plain ASCII without escape codes.
 - `svg/github-wordmark.svg`: an adaptive wordmark, matching the VPN header, for light and dark README backgrounds.
 - `manifest.json`: checksums for generated variants.
 

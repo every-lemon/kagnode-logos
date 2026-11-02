@@ -7,16 +7,16 @@ import json
 import cairosvg
 from PIL import Image
 
-# Hand-drawn letter cells preserve the mixed-case KagNode. wordmark.
+# Original seven-row letter cells; no external figlet font is required.
 LETTERS = {
-    'K': ['#   #', '#  # ', '###  ', '# #  ', '#  # ', '#   #'],
-    'a': ['     ', ' ### ', '    #', ' ####', '#   #', ' ####'],
-    'g': ['     ', ' ####', '#   #', ' ####', '    #', ' ### '],
-    'N': ['#   #', '##  #', '# # #', '# # #', '#  ##', '#   #'],
-    'o': ['     ', ' ### ', '#   #', '#   #', '#   #', ' ### '],
-    'd': ['    #', '    #', ' ####', '#   #', '#   #', ' ####'],
-    'e': ['     ', ' ### ', '#   #', '#####', '#    ', ' ####'],
-    '.': ['  ', '  ', '  ', '  ', '  ', '##'],
+    'K': ['#   #','#  # ','# #  ','##   ','# #  ','#  # ','#   #'],
+    'A': [' ### ','#   #','#   #','#####','#   #','#   #','#   #'],
+    'G': [' ####','#    ','#    ','# ###','#   #','#   #',' ####'],
+    'N': ['#   #','##  #','##  #','# # #','#  ##','#  ##','#   #'],
+    'O': [' ### ','#   #','#   #','#   #','#   #','#   #',' ### '],
+    'D': ['#### ','#   #','#   #','#   #','#   #','#   #','#### '],
+    'E': ['#####','#    ','#    ','#### ','#    ','#    ','#####'],
+    '.': [' ',' ',' ',' ',' ',' ','#'],
 }
 
 def mark_rows(root, width=28, height=14):
@@ -29,18 +29,26 @@ def mark_rows(root, width=28, height=14):
 def write_ascii(root):
     folder = root / 'ascii'
     folder.mkdir(exist_ok=True)
-    mark = mark_rows(root)
-    wordmark = [' '.join(LETTERS[c][y] for c in 'KagNode.').rstrip() for y in range(6)]
-    wide = ['  ' + row.ljust(28) + ('   ' + wordmark[y-4] if 4 <= y < 10 else '') for y, row in enumerate(mark)]
+    mark = mark_rows(root,20,9)
+    wordmark = [' '.join(LETTERS[c][y] for c in 'KAGNODE.').rstrip() for y in range(7)]
+    wide = ['  ' + row.ljust(20) + ('   ' + wordmark[y-1] if 1 <= y < 8 else '') for y, row in enumerate(mark)]
+    display=['  '+row.ljust(20)+('    '+wordmark[y-1].replace('#','##').replace(' ','  ') if 1 <= y < 8 else '') for y,row in enumerate(mark)]
     variants = {
         'kagnode': '\n'.join(row.rstrip() for row in wide) + '\n',
+        'kagnode-display': '\n'.join(row.rstrip() for row in display)+'\n',
+        'kagnode-wordmark': '\n'.join(wordmark)+'\n',
         'kagnode-compact': '\n'.join('  ' + row for row in mark) + '\n\n  KagNode.\n',
         'kagnode-small': '\n'.join('  ' + row for row in mark_rows(root, 16, 8)) + '\n\n  KagNode.\n',
         'mark': '\n'.join(mark) + '\n',
     }
     for name, plain in variants.items():
         (folder / (name + '.txt')).write_text(plain, encoding='ascii')
-        (folder / (name + '.ansi')).write_text('\x1b[94m' + plain + '\x1b[0m', encoding='ascii')
+        (folder / (name + '-blocks.txt')).write_text(plain.replace('#','█'),encoding='utf-8')
+        colored=[]
+        for row in plain.splitlines():
+            cut=25 if name=='kagnode' else 26 if name=='kagnode-display' else len(row)
+            colored.append('\x1b[94m'+row[:cut].replace('#','█')+'\x1b[97m'+row[cut:].replace('#','█')+'\x1b[0m')
+        (folder / (name + '.ansi')).write_text('\n'.join(colored)+'\n', encoding='utf-8')
     return variants
 
 if __name__ == '__main__':

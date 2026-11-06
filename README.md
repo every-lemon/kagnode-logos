@@ -1,32 +1,80 @@
 <p align="center"><img src="svg/github-wordmark.svg" width="440" alt="KagNode."></p>
 
-# KagNode logos
+# KagNode Logos
 
-The canonical KagNode geometric mark and its wordmarks, product layouts and icons. Combined marks use **KagNode.** with a period. Small symbol-only icons do not.
+## Overview
 
-- [`symbols/`](symbols/): **24 symbol-only variants**, without words or a period. Black, white, charcoal, gray, light gray, slate, blue and light blue; solid, outline and two-tone treatments. Transparent SVGs and PNGs at 16–2048 px. See the [variant guide](symbols/README.md).
-- `source/`: canonical SVG, complete commented logo sheet and font notices.
-- `svg/`: transparent marks, outlined wordmarks and product versions for light, dark, blue, black and white use.
-- [`png/`](png/): transparent raster assets, including all **240 symbol-only PNGs** directly in this folder. Names follow `mark-{style}-{color}-{size}.png`, for example [`mark-solid-gray-1024.png`](png/mark-solid-gray-1024.png).
-- `webp/`: lossless raster assets.
-- `pdf/`, `eps/`: vector print assets.
-- `icons/`: transparent favicons, PNG sizes from 16 to 1024, ICO and ICNS.
-- `ascii/`: a 112-column display, 68-column standard banner, 43-column wordmark, 22-column compact and 18-column small banners, plus the symbol alone. Each has plain ASCII (`.txt`), UTF-8 full blocks (`-blocks.txt`) and blue/white ANSI (`.ansi`) versions. Widths count terminal cells; use a monospaced font. The CLI and HTTP Boot select a smaller layout automatically and reserve a column to prevent wrapping. Redirected output stays plain ASCII without escape codes.
-- `svg/github-wordmark.svg`: an adaptive wordmark, matching the VPN header, for light and dark README backgrounds.
-- `manifest.json`: checksums for generated variants.
+Canonical KagNode symbols, wordmarks, product layouts and terminal artwork.
 
-Product variants include Cloud, Developer, Operator, Mail, VPN, HTTP Boot, CLI and **[Project]** as the placeholder. SVG comments identify the canvas, symbol, wordmark and product phases. The editable sheet preserves its existing section comments; generated wordmarks use outlined typography to avoid external font dependencies.
+Gallery: https://every-lemon.github.io/kagnode-logos/ · [Download the HTML viewer](kagnode-logos.html). The viewer requires internet access for artwork.
 
-## Rebuild
+## Release status
+
+Product source: **1.2.1**. Packaging preview: **1.2.1-packaging.1**.
+
+Packaging prereleases do not change the latest stable release or establish new hardware or service compatibility. See [verification](docs/VERIFICATION.md) and [changelog](CHANGELOG.md).
+
+## Features
+
+- Transparent SVG, PNG and WebP marks, plus PDF/EPS print artwork.
+- Symbol-only variants, favicons, product wordmarks and terminal banners.
+- Searchable web gallery and a downloadable GitHub-connected HTML viewer.
+
+## Requirements
+
+The gallery works in modern browsers. Rebuilding artwork requires Python, CairoSVG, Pillow, fontTools and the documented DejaVu font.
+
+## Installation and downloads
+
+Download from [GitHub Releases](https://github.com/every-lemon/kagnode-logos/releases). Verify `SHA256SUMS` before extracting or installing a package.
+
+| Payload | Formats | Support |
+| --- | --- | --- |
+| Complete source / artwork | `.tar.xz`, `.tar.gz`, `.zip` | Named top-level directory; manual setup |
+| Artwork and gallery | `.deb` | Data only |
+| Artwork and gallery | `.rpm` | Rocky Linux 10 packaging preview; native services unverified |
+
+
+
+Source packages install under `/usr/share/kagnode/`; they do not replace an existing application, migrate data, start services or configure networking.  See [package details](docs/PACKAGING.md).
+
+## Usage
 
 ```sh
-python3 -m venv .venv
-.venv/bin/pip install cairosvg pillow fonttools
-.venv/bin/python scripts/generate.py
+python3 scripts/verify.py
+# Open kagnode-logos.html or visit the gallery linked below.
 ```
 
-Install the DejaVu Sans system font at the path in the generator. Its notices are retained in `source/FONT-NOTICES.txt`. `python scripts/ascii_art.py` rebuilds only the terminal artwork and its checksums. The generator makes no network requests and uses no external image assets.
+See [operations and existing setup instructions](docs/OPERATIONS.md) for the full workflow and its prerequisites.
 
-`python scripts/symbols.py` rebuilds only the symbol collection and updates its checksums. This uses the paths in `source/canonical-mark.svg` directly and requires no fonts. Existing wordmarks and terminal artwork remain unchanged.
+## Configuration and storage
 
-See [LICENSE](LICENSE) for artwork permission and [BRAND-POLICY.md](BRAND-POLICY.md) for identity use. These assets do not assert worldwide uniqueness or trademark registration. Software in the KagNode application repositories has its own license.
+Edit canonical sources in source/. Keep existing /png, symbols/ and icon paths available for consumers.
+
+## Security
+
+Use HTTPS and least-privilege accounts for hosted services. Keep secrets and user data out of Git. Preview packages are for inspection and controlled testing; native service and hardware claims remain limited to recorded verification. See [security guidance](docs/SECURITY.md).
+
+## Development and testing
+
+```sh
+python3 scripts/verify.py
+python3 scripts/gallery.py --check
+python3 scripts/repository_check.py
+python3 scripts/format_source.py --check
+python3 scripts/release.py --output dist/packages
+```
+
+Install the formatting dependencies from `requirements-format.txt`. Package building additionally needs `dpkg-deb`, `rpmbuild`, XZ support and, for CLI binaries, Go. Read [the repository map](docs/STRUCTURE.md) before editing generated files.
+
+## Documentation
+
+- [Repository structure](docs/STRUCTURE.md)
+- [Operations](docs/OPERATIONS.md)
+- [Packages and release process](docs/PACKAGING.md)
+- [Verification and limits](docs/VERIFICATION.md)
+- [Changelog](CHANGELOG.md)
+
+## Licensing
+
+See [LICENSE](LICENSE) and retained third-party notices. Artwork permissions and code licensing are separate; see LICENSE-CODE and BRAND-POLICY.md.

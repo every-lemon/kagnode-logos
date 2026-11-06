@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Browse and download KagNode symbols, wordmarks, icons and terminal artwork."
+    />
+    <title>KagNode. Logos</title>
+    <style>
+      /* CSS */
+    </style>
+  </head>
+  <body data-preview="transparent">
+    <header>
+      <a
+        class="brand"
+        href="https://github.com/every-lemon/kagnode-logos"
+        aria-label="KagNode logo repository"
+        ><svg viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M4 18C4 9 11 4 23 5L18 27C10 28 4 25 4 18Z" />
+          <path d="m25 11 4 5-3 10-4-3Z" /></svg
+        >KagNode.</a
+      >
+      <nav aria-label="Main">
+        <a href="https://github.com/every-lemon/kagnode-logos">Source</a
+        ><a
+          href="https://github.com/every-lemon/kagnode-logos/blob/main/BRAND-POLICY.md"
+          >Brand guide</a
+        ><a href="https://nebulacoder.com">KagNode Website ↗</a>
+      </nav>
+    </header>
+    <main>
+      <section class="intro">
+        <span class="eyebrow">Brand assets</span>
+        <h1>The KagNode collection.</h1>
+        <p>
+          Symbols, wordmarks and product identities. Choose a color, find the
+          right format, and download the original artwork.
+        </p>
+      </section>
+      <div class="toolbar">
+        <input
+          class="search"
+          id="search"
+          type="search"
+          placeholder="Search symbols, products, colors…"
+          aria-label="Search artwork"
+        /><button class="button" id="refresh">Refresh</button
+        ><a
+          class="button primary"
+          id="viewer-download"
+          href="https://raw.githubusercontent.com/every-lemon/kagnode-logos/main/kagnode-logos.html"
+          download="kagnode-logos.html"
+          >Download HTML viewer ↓</a
+        >
+      </div>
+      <div class="filters" aria-label="Artwork filters">
+        <details>
+          <summary><span data-label="family">Family</span></summary>
+          <div
+            class="filter-menu"
+            data-menu="family"
+            role="group"
+            aria-label="Family"
+          ></div>
+        </details>
+        <details>
+          <summary><span data-label="color">Color</span></summary>
+          <div
+            class="filter-menu"
+            data-menu="color"
+            role="group"
+            aria-label="Color"
+          ></div>
+        </details>
+        <details>
+          <summary><span data-label="format">Format</span></summary>
+          <div
+            class="filter-menu"
+            data-menu="format"
+            role="group"
+            aria-label="Format"
+          ></div>
+        </details>
+        <button id="reset" class="button">Clear filters</button>
+        <div class="backgrounds" role="group" aria-label="Preview background">
+          <button data-background="transparent" aria-pressed="true">Grid</button
+          ><button data-background="light" aria-pressed="false">Light</button
+          ><button data-background="dark" aria-pressed="false">Dark</button>
+        </div>
+      </div>
+      <div id="status" class="status" role="status" hidden></div>
+      <div class="results-row">
+        <span id="count" role="status" aria-live="polite"></span
+        ><span id="revision"></span>
+      </div>
+      <div id="grid" class="grid"></div>
+      <div id="empty" class="empty" hidden>
+        No matching artwork. Try a different filter or search.
+      </div>
+      <div class="load-more">
+        <button id="more" class="button">Show more assets</button>
+      </div>
+      <section class="collections">
+        <div>
+          <h2>Keep the collection close.</h2>
+          <p>
+            Download the complete source and artwork collection, or save this
+            HTML viewer. The viewer loads artwork from GitHub and needs an
+            internet connection.
+          </p>
+        </div>
+        <div class="links">
+          <a
+            class="button"
+            href="https://github.com/every-lemon/kagnode-logos/releases"
+            >Collection downloads ↗</a
+          ><a
+            class="button"
+            href="https://github.com/every-lemon/kagnode-logos/tree/main/png"
+            >PNG collection ↗</a
+          >
+        </div>
+      </section>
+    </main>
+    <footer>
+      <span>KagNode. · Official artwork collection</span
+      ><span
+        >Combined marks use KagNode. Small symbol-only icons have no
+        period.</span
+      ><a href="https://github.com/every-lemon/kagnode-logos/blob/main/LICENSE"
+        >Artwork permissions</a
+      >
+    </footer>
+    <dialog id="asset-dialog" aria-labelledby="asset-title">
+      <div class="dialog-head">
+        <span class="eyebrow">Original artwork</span
+        ><button id="close-dialog" class="button" aria-label="Close details">
+          Close ×
+        </button>
+      </div>
+      <h2 id="asset-title"></h2>
+      <div id="dialog-preview"></div>
+      <dl></dl>
+      <div class="dialog-actions">
+        <button id="download-current" class="button primary">Download</button
+        ><button id="copy-url" class="button">Copy URL</button
+        ><a id="original" class="button" target="_blank" rel="noopener"
+          >Open original ↗</a
+        >
+      </div>
+    </dialog>
+    <div id="toast" class="toast" role="status" hidden></div>
+    <script id="catalog" type="application/json">
+      /* CATALOG */
+    </script>
+    <script>
+      /* JS */
+    </script>
+  </body>
+</html>

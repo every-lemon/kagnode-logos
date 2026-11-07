@@ -1,5 +1,9 @@
 # Changelog
 
+## Core integration preview
+
+Shared local UI components, manual animated navigation, natural scrolling rails and icon account menus. Added separate appearance-only account connections and signed UI patch controls. Existing storage, native services and prior release records are retained.
+
 ## Public library cleanup · November 7, 2026
 
 Removed retired internal-use branding from the current public artwork library. Historical tags and published release assets retain their existing provenance.

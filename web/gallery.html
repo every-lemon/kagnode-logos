@@ -13,11 +13,12 @@
       type="image/svg+xml"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='%232563eb'%3E%3Cpath d='M4 18C4 9 11 4 23 5L18 27C10 28 4 25 4 18Z'/%3E%3Cpath d='m25 11 4 5-3 10-4-3Z'/%3E%3C/g%3E%3C/svg%3E"
     />
+    <!-- CORE HEAD -->
     <style>
       /* CSS */
     </style>
   </head>
-  <body data-preview="auto">
+  <body data-preview="auto" class="core-gallery">
     <header class="site-header">
       <a
         class="brand"
@@ -36,19 +37,6 @@
           href="https://github.com/every-lemon/kagnode-logos"
           >GitHub ↗</a
         >
-        <button
-          id="theme"
-          class="icon-button"
-          aria-label="Switch to light theme"
-          title="Change theme"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="4" />
-            <path
-              d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"
-            />
-          </svg>
-        </button>
         <a
           class="button primary"
           id="viewer-download"
@@ -61,7 +49,11 @@
       </nav>
     </header>
     <div class="library-layout">
-      <aside class="library-nav" aria-label="Asset categories">
+      <aside
+        id="sidebar"
+        class="sidebar library-nav"
+        aria-label="Asset categories"
+      >
         <div class="nav-caption">LIBRARY</div>
         <nav id="families" aria-label="Artwork families"></nav>
         <div class="nav-resources">
@@ -73,11 +65,7 @@
             href="https://github.com/every-lemon/kagnode-logos/archive/refs/heads/main.zip"
             >Download library ZIP <span>↗</span></a
           >
-          <details class="settings">
-            <summary>Viewer settings</summary>
-            <div data-kn-scroll-settings></div>
-            <p>Artwork downloads need an internet connection.</p>
-          </details>
+          <button class="button" id="viewer-settings">Viewer settings</button>
         </div>
       </aside>
       <main>
@@ -219,6 +207,16 @@
         </footer>
       </main>
     </div>
+    <dialog id="viewer-preferences" aria-label="Viewer settings">
+      <h2>Viewer settings</h2>
+      <p>Artwork downloads need an internet connection.</p>
+      <label for="scroll-preference">Scrolling</label
+      ><select id="scroll-preference">
+        <option value="custom">KagNode rails</option>
+        <option value="native">Native browser scrollbars</option>
+      </select>
+      <form method="dialog"><button class="button">Done</button></form>
+    </dialog>
     <dialog id="asset-dialog" aria-labelledby="asset-title">
       <div class="dialog-head">
         <span class="eyebrow" id="asset-family">Original artwork</span

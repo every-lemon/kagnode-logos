@@ -20,6 +20,7 @@ jobs:
           python-version: '3.12'
       - run: pip install -r requirements-gallery.txt
       - run: python scripts/verify.py && python scripts/gallery.py --check
+      - run: python -m unittest discover -s tests -p test_gallery.py -v
       - run: mkdir _site && cp index.html kagnode-logos.html _site/
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b
       - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b

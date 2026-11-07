@@ -18,7 +18,8 @@ Packaging prereleases do not change the latest stable release or establish new h
 
 - Transparent SVG, PNG and WebP marks, plus PDF/EPS print artwork.
 - Symbol-only variants, favicons, product wordmarks and terminal banners.
-- Searchable web gallery and a downloadable GitHub-connected HTML viewer.
+- Responsive gallery grouping sizes and formats by design, with color/product/format filters and a downloadable GitHub-connected HTML viewer.
+- Real artwork previews for vector, print and icon downloads; terminal art displays without raw ANSI escape codes. Automatic contrast, light/dark themes and transparent favicon.
 
 ## Requirements
 

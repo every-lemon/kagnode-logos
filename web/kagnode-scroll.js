@@ -102,6 +102,17 @@
       element.closest(".kn-scroll-rail,[data-native-scroll]")
     )
       return false;
+    // Closed disclosure content can retain layout metrics in some engines.
+    // It must never mount a floating scrollbar over unrelated artwork.
+    if (
+      !element.getClientRects().length ||
+      element.closest("[hidden],dialog:not([open]),[inert]") ||
+      getComputedStyle(element).visibility === "hidden"
+    )
+      return false;
+    const closed = element.closest("details:not([open])");
+    if (closed && !closed.querySelector(":scope > summary")?.contains(element))
+      return false;
     const d = dimensions(element, axis);
     if (d.max < 2 || d.length < 16) return false;
     return /auto|scroll/.test(

@@ -732,6 +732,7 @@
   "symbols/svg/two-tone/light-gray.svg",
   "symbols/svg/two-tone/slate.svg",
   "symbols/svg/two-tone/white.svg",
+  "tests/test_gallery.py",
   "tests/test_repository_release.py",
   "web/gallery.css",
   "web/gallery.html",

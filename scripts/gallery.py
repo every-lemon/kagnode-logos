@@ -24,6 +24,54 @@ COLORS = [
 ]
 
 
+def enrich_previews(assets):
+    """Every download has artwork; browser-unsupported originals use a sibling."""
+    by_path = {item["path"]: item for item in assets}
+    for item in assets:
+        path = Path(item["path"])
+        stem = path.stem
+        if item["family"] == "symbols" and item["variant"] != "standard":
+            identity = "symbols/" + item["variant"] + "/" + item["color"]
+            candidate = "symbols/svg/" + item["variant"] + "/" + item["color"] + ".svg"
+        elif item["family"] == "icons":
+            identity, candidate = "icons/kagnode", "icons/favicon.svg"
+        elif item["family"] == "sheets":
+            identity, candidate = "sheets/logo-sheet", "png/logo-sheet.png"
+        else:
+            identity = item["family"] + "/" + stem
+            candidate = "svg/" + stem + ".svg"
+        item["design"] = identity
+        item["product"] = (
+            re.sub(r"-(?:black|white|dark|light)$", "", stem)
+            if item["family"] == "products"
+            else ""
+        )
+        item["preview_background"] = (
+            "dark"
+            if item["color"] in {"white", "light-gray", "light-blue", "dark"}
+            else "light"
+        )
+        if item["format"] in {"txt", "ansi"}:
+            # Never display terminal escape instructions or parse artwork as HTML.
+            raw = (ROOT / item["path"]).read_text()
+            plain = re.sub(r"\x1b\[[0-?]*[ -/]*[@-~]", "", raw)
+            plain = re.sub(r"[\x00-\x08\x0b-\x1f\x7f]", "", plain)
+            item["preview_text"] = plain.rstrip()[:24000]
+            item["preview_background"] = "dark"
+            continue
+        if candidate not in by_path:
+            candidate = (
+                item["path"] if item["format"] in {"svg", "png", "webp", "ico"} else ""
+            )
+        if not candidate:
+            raise ValueError("No browser-renderable artwork for " + item["path"])
+        preview = by_path[candidate]
+        item["preview_path"] = candidate
+        item["preview_format"] = preview["format"]
+        item["preview_sha256"] = preview["sha256"]
+    return assets
+
+
 def catalog():
     checksums = json.loads((ROOT / "manifest.json").read_text())
     assets = []
@@ -52,10 +100,10 @@ def catalog():
             "original",
         )
         family = (
-            "symbols"
-            if name.startswith("symbols/") or stem.startswith("mark-")
-            else "terminal"
+            "terminal"
             if name.startswith("ascii/")
+            else "symbols"
+            if name.startswith("symbols/") or stem.startswith("mark-")
             else "icons"
             if name.startswith("icons/")
             else "sheets"
@@ -86,10 +134,12 @@ def catalog():
         ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
     ).strip()
     return {
-        "schema": 1,
+        "schema": 2,
         "repository": "every-lemon/kagnode-logos",
         "source_commit": sha,
-        "assets": sorted(assets, key=lambda a: (a["family"], a["path"])),
+        "assets": enrich_previews(
+            sorted(assets, key=lambda a: (a["family"], a["path"]))
+        ),
     }
 
 

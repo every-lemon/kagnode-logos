@@ -2,6 +2,8 @@
 """Build a self-contained GitHub-connected artwork gallery from the asset manifest."""
 
 import argparse
+import base64
+import html
 import hashlib
 import json
 from pathlib import Path
@@ -156,14 +158,33 @@ def build(check=False):
     else:
         data = catalog()
     encoded = json.dumps(data, indent=2, ensure_ascii=False) + "\n"
+    bundle = json.loads((ROOT / "vendor/core-bundle.json").read_text())
+    assets = {
+        name: base64.b64decode(value["data"]).decode()
+        for name, value in bundle["files"].items()
+    }
+    config = {
+        "version": bundle["version"],
+        "authenticated": False,
+        "app": "logos",
+        "mark": "data:image/svg+xml;base64," + bundle["files"]["mark.svg"]["data"],
+    }
+    head = (
+        '<meta name="kagnode-core" content="'
+        + html.escape(json.dumps(config), quote=True)
+        + '">\n<script>'
+        + assets[bundle["entrypoints"]["theme"]]
+        + "</script>"
+    )
     page = (
         (ROOT / "web/gallery.html")
         .read_text()
+        .replace("<!-- CORE HEAD -->", head)
         .replace(
             "/* CSS */",
             (ROOT / "web/gallery.css").read_text()
             + "\n"
-            + (ROOT / "web/kagnode-scroll.css").read_text(),
+            + assets[bundle["entrypoints"]["style"]],
         )
         .replace(
             "/* CATALOG */",
@@ -171,9 +192,9 @@ def build(check=False):
         )
         .replace(
             "/* JS */",
-            (ROOT / "web/gallery.js").read_text()
+            assets[bundle["entrypoints"]["script"]]
             + "\n"
-            + (ROOT / "web/kagnode-scroll.js").read_text(),
+            + (ROOT / "web/gallery.js").read_text(),
         )
     )
     outputs = {"catalog.json": encoded, "index.html": page, "kagnode-logos.html": page}

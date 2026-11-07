@@ -685,33 +685,17 @@
         .forEach((b) => b.setAttribute("aria-pressed", String(b === button)));
     }),
   );
-  function theme(value) {
-    document.documentElement.dataset.theme = value;
-    document
-      .querySelector("#theme")
-      .setAttribute(
-        "aria-label",
-        "Switch to " + (value === "dark" ? "light" : "dark") + " theme",
-      );
-  }
-  try {
-    theme(
-      localStorage.getItem("kagnode.logosTheme") ||
-        (matchMedia("(prefers-color-scheme: light)").matches
-          ? "light"
-          : "dark"),
-    );
-  } catch {
-    theme("dark");
-  }
-  document.querySelector("#theme").addEventListener("click", () => {
-    const next =
-      document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-    theme(next);
-    try {
-      localStorage.setItem("kagnode.logosTheme", next);
-    } catch {}
+  document.querySelector("#viewer-settings").addEventListener("click", () => {
+    document.querySelector("#scroll-preference").value =
+      window.KagNodeScroll.mode;
+    window.KagNodeControls?.sync();
+    document.querySelector("#viewer-preferences").showModal();
   });
+  document
+    .querySelector("#scroll-preference")
+    .addEventListener("change", (e) =>
+      window.KagNodeScroll.setMode(e.target.value),
+    );
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape")
       document.querySelectorAll(".filter-set details[open]").forEach((d) => {

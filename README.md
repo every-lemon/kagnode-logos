@@ -10,7 +10,7 @@ Gallery: https://every-lemon.github.io/kagnode-logos/ · [Download the HTML view
 
 ## Release status
 
-Product source: **1.2.1**. Packaging preview: **1.2.1-packaging.1**.
+Product source: **1.2.1**. Packaging preview: **1.2.1-packaging.2**.
 
 Packaging prereleases do not change the latest stable release or establish new hardware or service compatibility. See [verification](docs/VERIFICATION.md) and [changelog](CHANGELOG.md).
 
@@ -49,6 +49,8 @@ python3 scripts/verify.py
 See [operations and existing setup instructions](docs/OPERATIONS.md) for the full workflow and its prerequisites.
 
 ## Configuration and storage
+
+Shared presentation uses [KagNode Core](docs/CORE.md), with a pinned local fallback and reviewed server adapters. Compatible stable UI patches have a separate local-administrator policy.
 
 Edit canonical sources in source/. Keep existing /png, symbols/ and icon paths available for consumers.
 

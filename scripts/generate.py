@@ -62,7 +62,6 @@ for name, mark, text in [
     for product in [
         "Cloud",
         "Developer",
-        "Operator",
         "Mail",
         "VPN",
         "HTTP Boot",

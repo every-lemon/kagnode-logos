@@ -1,5 +1,9 @@
 # Changelog
 
+## Public library cleanup · November 7, 2026
+
+Removed retired internal-use branding from the current public artwork library. Historical tags and published release assets retain their existing provenance.
+
 ## Gallery fixes · November 7, 2026
 
 - Replaced repeated per-file cards with grouped designs and original-format download choices.

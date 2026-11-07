@@ -40,7 +40,6 @@
     developer: "Developer",
     "http-boot": "HTTP Boot",
     mail: "Mail",
-    operator: "Operator",
     project: "Project",
     vpn: "VPN",
   };

@@ -566,6 +566,10 @@
   async function refresh(manual = false) {
     const button = document.querySelector("#refresh");
     button.disabled = true;
+    const spinner = window.KagNodeLoading.spinner();
+    spinner.style.setProperty("--kn-spinner-size", "22px");
+    button.prepend(spinner);
+    button.setAttribute("aria-busy", "true");
     try {
       const response = await fetch(rawRoot + "main/catalog.json", {
         credentials: "omit",
@@ -587,6 +591,8 @@
       notice.textContent =
         "Using the included catalog. GitHub could not be reached; artwork and downloads need internet access. Use Refresh to retry.";
     } finally {
+      spinner.remove();
+      button.removeAttribute("aria-busy");
       button.disabled = false;
     }
   }

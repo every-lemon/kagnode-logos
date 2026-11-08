@@ -10,7 +10,7 @@ Gallery: https://every-lemon.github.io/kagnode-logos/ · [Download the HTML view
 
 ## Release status
 
-Product source: **1.2.1**. Packaging preview: **1.2.1-packaging.2**.
+Product source: **1.2.1**. Packaging preview: **1.2.1-packaging.5**.
 
 Packaging prereleases do not change the latest stable release or establish new hardware or service compatibility. See [verification](docs/VERIFICATION.md) and [changelog](CHANGELOG.md).
 

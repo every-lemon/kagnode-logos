@@ -36,7 +36,10 @@ def enrich_previews(assets):
             identity = "symbols/" + item["variant"] + "/" + item["color"]
             candidate = "symbols/svg/" + item["variant"] + "/" + item["color"] + ".svg"
         elif item["family"] == "icons":
-            identity, candidate = "icons/kagnode", "icons/favicon.svg"
+            if item["path"].startswith("icons/entropy/"):
+                identity, candidate = "icons/entropy", "icons/entropy/favicon.svg"
+            else:
+                identity, candidate = "icons/kagnode", "icons/favicon.svg"
         elif item["family"] == "sheets":
             identity, candidate = "sheets/logo-sheet", "png/logo-sheet.png"
         else:
@@ -44,7 +47,9 @@ def enrich_previews(assets):
             candidate = "svg/" + stem + ".svg"
         item["design"] = identity
         item["product"] = (
-            re.sub(r"-(?:black|white|dark|light)$", "", stem)
+            "entropy"
+            if stem.startswith("entropy-") or item["path"].startswith("icons/entropy/")
+            else re.sub(r"-(?:black|white|dark|light)$", "", stem)
             if item["family"] == "products"
             else ""
         )

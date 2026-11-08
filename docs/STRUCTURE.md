@@ -14,3 +14,5 @@
 Do not publish .git, runtime data, private directories, credentials, caches or local build scratch. Existing generated installers, minified web assets, checksums and compatibility artwork paths are intentionally retained.
 
 Use `python3 scripts/format_web.py --check` for first-party CSS/JavaScript and plain HTML source (Node.js is a build-time tool only). Prettier 3.7.4 is pinned. Generated HTML/bundles and template expression whitespace are preserved separately.
+
+Use `scripts/generate.py --product entropy` for partial Entropy exports; all previous artwork bytes remain unchanged. The canonical product symbol is `source/canonical-entropy.svg`; `svg/entropy-lockup-*` crops the same outlined wordmark for real headers. Set `SOURCE_DATE_EPOCH` for reproducible print metadata, then pin the gallery only after the artwork exists in a committed ancestor. See [Entropy assets](ENTROPY.md).

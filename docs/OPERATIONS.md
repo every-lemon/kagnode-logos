@@ -16,13 +16,15 @@ The canonical KagNode geometric mark and its wordmarks, product layouts and icon
 - `svg/github-wordmark.svg`: an adaptive wordmark, matching the VPN header, for light and dark README backgrounds.
 - `manifest.json`: checksums for generated variants.
 
-Product variants include Cloud, Developer, Mail, VPN, HTTP Boot, CLI and **[Project]** as the placeholder. SVG comments identify the canvas, symbol, wordmark and product phases. The editable sheet preserves its existing section comments; generated wordmarks use outlined typography to avoid external font dependencies.
+Product variants include Cloud, Developer, Mail, Passwords, Media, Core, Entropy, VPN, HTTP Boot, CLI and **[Project]** as the placeholder. SVG comments identify the canvas, symbol, wordmark and product phases. The editable sheet preserves its existing section comments; generated wordmarks use outlined typography to avoid external font dependencies.
+
+Entropy has a separate product E and [compact header lockups](ENTROPY.md). The KagNode canonical symbol and all prior download paths remain unchanged.
 
 ## Rebuild
 
 ```sh
 python3 -m venv .venv
-.venv/bin/pip install cairosvg pillow fonttools
+.venv/bin/pip install -r requirements-artwork.txt
 .venv/bin/python scripts/generate.py
 ```
 

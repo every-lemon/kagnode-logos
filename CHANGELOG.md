@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.0-beta.1 · Entropy product artwork
+
+- Add a separate pixel E product symbol, outlined wordmarks, compact header lockups and dedicated favicons in all existing download formats.
+- Preserve every one of the 774 previously published artwork checksums and all existing paths. Partial export avoids rewriting unrelated artwork.
+- Group Entropy icons under its own design and matching SVG preview instead of the general KagNode favicon.
+- Pin artwork tooling and normalize PDF/EPS creation metadata when SOURCE_DATE_EPOCH is supplied; repeated partial exports match.
+- Keep existing licenses and latest stable-release selections. Artwork is identity, not an entropy/security certification.
+
 ## Declared Core binding preview
 
 Clarify that the static gallery is rebuilt with Core at publication time and does not create server bindings or run an update daemon. Existing artwork, viewer paths and licenses are retained.

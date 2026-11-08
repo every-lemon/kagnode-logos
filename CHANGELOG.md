@@ -1,5 +1,9 @@
 # Changelog
 
+## Declared Core binding preview
+
+Clarify that the static gallery is rebuilt with Core at publication time and does not create server bindings or run an update daemon. Existing artwork, viewer paths and licenses are retained.
+
 ## Shared loading spinner preview
 
 Use KagNode Core 1.0.5 for the shared split-orbit loading mark, with reduced-motion support and existing status/recovery controls retained. This changes web presentation without resetting data or provisioning native services.

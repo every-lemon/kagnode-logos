@@ -4,7 +4,7 @@ This application uses [KagNode Core](https://github.com/every-lemon/kagnode-core
 
 Application servers serve Core assets from their own origin. Browsers never fetch Core scripts from GitHub. The downloaded gallery embeds its UI and stays account-free. Artwork downloads still require internet access.
 
-Only stable compatible UI patches may install automatically. Backend helpers, prereleases, minor/major versions and application updates require review. A Core patch cannot restart a service or run a backend hook. The local administrator sees status, update policy and rollback in settings. Use `sudo kagnode core bind logos --user SERVICE_USER` to bind the service and run the manager described in [Core operations](https://github.com/every-lemon/kagnode-core/blob/main/docs/OPERATIONS.md). The static gallery is rebuilt and published; it has no administrator or automatic daemon.
+The gallery embeds a reviewed Core bundle at build time and remains account-free. Rebuild and republish the gallery and downloaded viewer when adopting Core changes. It does not run the Core manager, create server bindings or expose administration/update controls. Retain artwork paths, licenses and prior published viewers.
 
 This preview upgrades web presentation. It does not qualify native services, codecs, HTTP Boot images, network hardware or a new stable application release. Keep application databases and deployment configuration in their existing locations. No data reset or native provisioning is part of Core integration.
 

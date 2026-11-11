@@ -10,7 +10,7 @@ Gallery: https://every-lemon.github.io/kagnode-logos/ · [Download the HTML view
 
 ## Release status
 
-**5.0.0** is the coordinated stable artwork and gallery release. The gallery bundles reviewed Core 5 presentation and remains account-free.
+**5.0.1** is the coordinated stable artwork and gallery release. The gallery bundles reviewed Core 5 presentation and remains account-free.
 
 Stable scope covers artwork, the browser gallery/viewer and data-only packages; it does not install or qualify native services. See [verification](docs/VERIFICATION.md) and [changelog](CHANGELOG.md).
 

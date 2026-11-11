@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.0.0
+
+- Join the coordinated stable KagNode version line with reviewed Core 5 components and locally bundled presentation.
+- Retain canonical artwork paths, account-free browsing, transparent previews and the downloadable HTML viewer.
+- Publish deterministic source/artwork archives and data-only Debian/Rocky Linux packages with no service hooks.
+
 ## 1.3.0-beta.1 · Entropy product artwork
 
 - Add a separate pixel E product symbol, outlined wordmarks, compact header lockups and dedicated favicons in all existing download formats.

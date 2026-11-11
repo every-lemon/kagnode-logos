@@ -603,6 +603,43 @@
     .addEventListener("click", (event) => {
       event.preventDefault();
       const clone = document.documentElement.cloneNode(true);
+      // Export declarative page content, not a partially initialized Core runtime.
+      // Event listeners and WeakMap state cannot survive HTML serialization.
+      for (const sidebar of clone.querySelectorAll("[data-core-sidebar]")) {
+        const navigation = sidebar.querySelector(
+          ":scope > .kn-core-sidebar-navigation",
+        );
+        if (navigation) sidebar.replaceChildren(...navigation.childNodes);
+        sidebar.removeAttribute("data-core-sidebar");
+        sidebar.removeAttribute("inert");
+      }
+      for (const node of [clone, ...clone.querySelectorAll("*")]) {
+        for (const attribute of [
+          "data-kn-core",
+          "data-core-ready",
+          "data-core-shell",
+          "data-core-drawer",
+          "data-core-collapsed",
+          "data-core-preview",
+          "data-core-public",
+          "data-core-icon-ready",
+          "data-core-icon-host",
+          "data-core-tooltip",
+        ])
+          node.removeAttribute(attribute);
+        node.classList.remove(
+          "kn-core-scroll",
+          "collapsed",
+          "kag-loading-covered",
+        );
+        if (/^kn-core-scroll-[0-9]+$/.test(node.id)) node.removeAttribute("id");
+      }
+      clone
+        .querySelectorAll(
+          ".kn-core-rail,.kn-core-mobile-toggle,.kn-core-drawer-scrim,.kn-core-tooltip,#kn-core-loading,#kn-core-account-menu",
+        )
+        .forEach((node) => node.remove());
+
       clone.querySelector("#grid").replaceChildren();
       clone.querySelector("#families").replaceChildren();
       clone.querySelector("#file-options").replaceChildren();

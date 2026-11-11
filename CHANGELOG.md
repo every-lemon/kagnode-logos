@@ -1,5 +1,10 @@
 # Changelog
 
+## 5.0.1
+
+- Save a declarative HTML viewer instead of stale Core runtime flags, controls and scroll rails, so reopened files initialize navigation correctly.
+- Test saved-viewer mobile open/close behavior and one instance of each sidebar control.
+
 ## 5.0.0
 
 - Join the coordinated stable KagNode version line with reviewed Core 5 components and locally bundled presentation.

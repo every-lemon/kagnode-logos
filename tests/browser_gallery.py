@@ -14,6 +14,7 @@ from playwright.sync_api import expect, sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = json.loads((ROOT / "catalog.json").read_text())
+CORE_VERSION = json.loads((ROOT / "vendor/core-bundle.json").read_text())["version"]
 
 
 class Handler(SimpleHTTPRequestHandler):
@@ -95,7 +96,7 @@ try:
                 assert page.evaluate(
                     "document.documentElement.scrollWidth <= innerWidth+1"
                 )
-                assert page.evaluate("KagNodeCore.version") == "5.0.0"
+                assert page.evaluate("KagNodeCore.version") == CORE_VERSION
                 assert page.locator("[data-core-account-trigger]").count() == 0
                 page.locator("#search").fill("Entropy")
                 expect(page.locator(".asset").first).to_be_visible()
@@ -149,6 +150,14 @@ try:
                 .get_attribute("href")
                 .startswith("data:")
             )
+            page.set_viewport_size({"width": 390, "height": 1000})
+            page.locator("[data-core-mobile]").click()
+            assert page.locator(".kn-core-drawer-scrim:not([hidden])").count() == 1
+            assert page.locator("#sidebar").evaluate("e=>!e.inert")
+            page.keyboard.press("Escape")
+            assert page.locator("#sidebar").evaluate("e=>e.inert")
+            assert page.locator("[data-core-toggle]").count() == 1
+            assert page.locator(".kn-core-drawer-scrim").count() == 1
             unavailable["value"] = True
             page.locator("#refresh").click()
             expect(page.locator("#status")).to_be_visible()

@@ -4,5 +4,7 @@
   "version_pattern": "^([^\\s]+)",
   "kind": "artwork",
   "license": "LicenseRef-KagNode-Artwork",
-  "revision": 6
+  "revision": 1,
+  "channel": "stable",
+  "upgrade_fixture_version": "1.3.0-beta.1.packaging.6"
 }

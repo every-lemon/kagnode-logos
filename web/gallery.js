@@ -466,15 +466,13 @@
     const host = document.querySelector("#families");
     host.replaceChildren();
     const icons = {
-      "": "M3 3h7v7H3zm11 0h7v7h-7zM3 14h7v7H3zm11 0h7v7h-7z",
-      symbols: "M6 19 12 4l6 15M8 14h8",
-      wordmarks: "M3 5h18M12 5v15M7 20h10",
-      products:
-        "M5 5h14v14H5zM9 1v4m6-4v4M9 19v4m6-4v4M1 9h4m-4 6h4m14-6h4m-4 6h4",
-      icons:
-        "M6 3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3",
-      terminal: "m5 7 5 5-5 5m8 0h6",
-      sheets: "M5 3h10l4 4v14H5zM9 11h6m-6 4h6",
+      "": "grid",
+      symbols: "layers",
+      wordmarks: "plan",
+      products: "compute",
+      icons: "grid",
+      terminal: "code",
+      sheets: "images",
     };
     for (const [key, name] of Object.entries(families)) {
       const count = groups(
@@ -484,14 +482,8 @@
       b.type = "button";
       b.dataset.family = key;
       b.setAttribute("aria-pressed", String(family === key));
-      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      svg.setAttribute("viewBox", "0 0 24 24");
-      svg.setAttribute("aria-hidden", "true");
-      const path = document.createElementNS(svg.namespaceURI, "path");
-      path.setAttribute("d", icons[key]);
-      svg.append(path);
+      b.innerHTML = KagNodeCore.icon(icons[key]);
       b.append(
-        svg,
         element("span", name),
         element("span", String(count), "category-count"),
       );

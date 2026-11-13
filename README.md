@@ -10,11 +10,13 @@ Gallery: https://every-lemon.github.io/kagnode-logos/ · [Download the HTML view
 
 ## Release status
 
-**5.0.1** is the coordinated stable artwork and gallery release. The gallery bundles reviewed Core 5 presentation and remains account-free.
+**5.0.2** is the coordinated stable artwork and gallery release. The gallery bundles reviewed Core 5 presentation and remains account-free.
 
 Stable scope covers artwork, the browser gallery/viewer and data-only packages; it does not install or qualify native services. See [verification](docs/VERIFICATION.md) and [changelog](CHANGELOG.md).
 
 ## Features
+
+The gallery uses locally bundled Core 5.0.6 controls. Logos remains account-free and does not display account update notices. Its reviewed installer copies and verifies static artwork without starting a service.
 
 - Transparent SVG, PNG and WebP marks, plus PDF/EPS print artwork.
 - Symbol-only variants, favicons, product wordmarks and terminal banners.
@@ -72,6 +74,8 @@ python3 scripts/release.py --output dist/packages
 Install the formatting dependencies from `requirements-format.txt`. Data package building additionally needs `dpkg-deb`, `rpmbuild` and XZ support. Read [the repository map](docs/STRUCTURE.md) before editing generated files.
 
 ## Documentation
+
+- [Reviewed local setup](docs/INSTALLER.md)
 
 - [Repository structure](docs/STRUCTURE.md)
 - [Operations](docs/OPERATIONS.md)

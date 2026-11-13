@@ -11,3 +11,7 @@ This stable gallery bundles reviewed Core 5 presentation. It does not qualify na
 ## Shared loading mark
 
 Core supplies KagNode’s split-orbit spinner. The canonical logo stays still while its separated accent orbits. Reduced-motion settings stop the animation. Existing loading labels, retries and dismissal controls remain available. The server serves the spinner and artwork locally; no browser Core connection to GitHub is required.
+
+## Update summaries
+
+This account-free artwork gallery does not run the automatic manager notice channel. It does not invent update summaries or user dismissal records. Shared controls remain locally bundled and reviewed with the application/artwork release.

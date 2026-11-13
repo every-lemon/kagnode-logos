@@ -1,3 +1,9 @@
+# 5.0.2
+
+- Updated the reviewed Core interface and account-scoped update notice integration where supported.
+- Added project-owned setup plan, review, apply, health and recovery interfaces; existing native installers retain their own boundaries.
+- Retained account-free artwork/gallery behavior and all existing artwork; static setup verifies the installed inventory without starting a service.
+
 # Changelog
 
 ## 5.0.1

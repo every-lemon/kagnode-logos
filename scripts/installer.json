@@ -1,0 +1,45 @@
+{
+  "platforms": [
+    [
+      "ubuntu",
+      "24.04"
+    ],
+    [
+      "debian",
+      "12"
+    ],
+    [
+      "debian",
+      "13"
+    ]
+  ],
+  "architectures": [
+    "x86_64",
+    "aarch64"
+  ],
+  "required_paths": [
+    "code",
+    "configuration"
+  ],
+  "dependencies": [
+    "python3"
+  ],
+  "warnings": [
+    "Logos is account-free static artwork. No authentication, network service or automatic update notice is added."
+  ],
+  "kind": "static",
+  "fields": [],
+  "paths": {
+    "code": "/srv/kagnode/logos/runtime",
+    "configuration": "/srv/kagnode/logos/runtime/packaging/source-files.json",
+    "data": "/srv/kagnode/logos/runtime"
+  },
+  "units": [],
+  "health_scope": "Exact artwork/source inventory only; no account or service exists.",
+  "changes": [
+    "Copy the reviewed artwork and local gallery into the shared project root",
+    "Verify every installed source/artwork checksum; do not start a server"
+  ],
+  "project": "logos",
+  "version": "5.0.2"
+}
